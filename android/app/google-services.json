@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "61282129253",
+    "project_id": "ev-charging-station-app-7db85",
+    "storage_bucket": "ev-charging-station-app-7db85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61282129253:android:3962565b87ac087d477d8c",
+        "android_client_info": {
+          "package_name": "com.example.ev_charging_stations"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ7BAv7R2rUoFUMqqmTkzAsEu7lsaFzbo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

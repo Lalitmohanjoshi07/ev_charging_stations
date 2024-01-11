@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.ev_charging_stations">
     <application
         android:label="ev_charging_stations"
         android:name="${applicationName}"
