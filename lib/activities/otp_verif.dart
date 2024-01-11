@@ -1,3 +1,4 @@
+import 'package:ev_charging_stations/activities/helper_classes/auth.dart';
 import 'package:ev_charging_stations/activities/helper_classes/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
@@ -10,9 +11,13 @@ class OtpVerification extends StatefulWidget {
 }
 
 class _OtpVerificationState extends State<OtpVerification> {
-  // TextEditingController
-  void verifyOtp() {
-    Navigator.pushNamedAndRemoveUntil(context, "home", (route) => true);
+  // push to next page
+  void verifiedOtp(bool check) {
+    if (check) {
+      Navigator.pushNamedAndRemoveUntil(context, "home", (route) => true);
+    } else {
+      Helper.alert(context, "wrong otp try rechecking the phone number");
+    }
   }
 
   @override
@@ -20,6 +25,7 @@ class _OtpVerificationState extends State<OtpVerification> {
     final text = (ModalRoute.of(context)!.settings.arguments == null)
         ? "no number"
         : ModalRoute.of(context)!.settings.arguments;
+    TextEditingController otpController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -52,14 +58,18 @@ class _OtpVerificationState extends State<OtpVerification> {
                 height: 20,
               ),
               //TODO: add otp textarea
-              const Pinput(
+              Pinput(
+                controller: otpController,
                 length: 6,
                 showCursor: true,
               ),
               const SizedBox(
                 height: 20,
               ),
-              Helper.customButton("Continue", verifyOtp, 50, 300),
+              Helper.customButton("Continue", () async {
+                bool res = await Auth.verifyOtp(otpController.text);
+                verifiedOtp(res);
+              }, 50, 300),
               TextButton(
                   onPressed: () {
                     Navigator.pop(context);

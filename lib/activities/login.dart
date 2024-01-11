@@ -21,19 +21,15 @@ class _LoginActivityState extends State<LoginActivity> {
     super.initState();
   }
 
-  //function when the login is pressed
-  // void onLogin() {
-  //   if (countryCodeController.text.toString() == "" ||
-  //       phNoCon.text.toString() == "") {
-  //     Helper.alert(context, "enter required values");
-  //   } else if (phNoCon.text.toString().length < 10 ||
-  //       phNoCon.text.toString().contains(RegExp(r'.*\D.*'))) {
-  //     Helper.alert(context, "enter valid phone number");
-  //   } else {
-  //     Navigator.pushNamed(context, "otp",
-  //         arguments: phNoCon.text.toString().substring(6, 10));
-  //   }
-  // }
+  //function when the login is processed
+  void onLogin(Map res) {
+    if (!res['success']) {
+      Helper.alert(context, "enter valid phone number");
+    } else {
+      Navigator.pushNamed(context, "otp",
+          arguments: phNoCon.text.toString().substring(6, 10));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +62,10 @@ class _LoginActivityState extends State<LoginActivity> {
               const SizedBox(
                 height: 30,
               ),
-              Helper.customButton("Send Code", () {
-                Auth.loginFirebase(phNoCon.text.toString(),
-                    countryCodeController.text.toString(), context);
+              Helper.customButton("Send Code", () async {
+                Map res = await Auth.loginFirebase(phNoCon.text.toString(),
+                    countryCodeController.text.toString());
+                onLogin(res);
               }, 50, 300)
             ]),
           ),
