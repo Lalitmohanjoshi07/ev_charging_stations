@@ -18,7 +18,7 @@ void main() async {
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: 'login',
+    initialRoute: 'home',
     routes: {
       'login': (context) => const LoginActivity(),
       'home': (context) => const HomeActivity(),

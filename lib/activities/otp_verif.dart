@@ -1,5 +1,5 @@
-import 'package:ev_charging_stations/activities/helper_classes/auth.dart';
-import 'package:ev_charging_stations/activities/helper_classes/helper.dart';
+import 'package:ev_charging_stations/helper_classes/auth.dart';
+import 'package:ev_charging_stations/helper_classes/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -14,7 +14,7 @@ class _OtpVerificationState extends State<OtpVerification> {
   // push to next page
   void verifiedOtp(bool check) {
     if (check) {
-      Navigator.pushNamedAndRemoveUntil(context, "home", (route) => true);
+      Navigator.pushNamedAndRemoveUntil(context, "home", (route) => false);
     } else {
       Helper.alert(context, "wrong otp try rechecking the phone number");
     }
@@ -66,10 +66,14 @@ class _OtpVerificationState extends State<OtpVerification> {
               const SizedBox(
                 height: 20,
               ),
-              Helper.customButton("Continue", () async {
-                bool res = await Auth.verifyOtp(otpController.text);
-                verifiedOtp(res);
-              }, 50, 300),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Helper.customButton("Continue", () async {
+                      bool res = await Auth.verifyOtp(otpController.text);
+                      verifiedOtp(res);
+                    }, 50, 300),
+                  ]),
               TextButton(
                   onPressed: () {
                     Navigator.pop(context);

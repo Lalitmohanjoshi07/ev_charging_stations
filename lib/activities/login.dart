@@ -1,5 +1,5 @@
-import 'package:ev_charging_stations/activities/helper_classes/auth.dart';
-import 'package:ev_charging_stations/activities/helper_classes/helper.dart';
+import 'package:ev_charging_stations/helper_classes/auth.dart';
+import 'package:ev_charging_stations/helper_classes/helper.dart';
 import 'package:flutter/material.dart';
 
 class LoginActivity extends StatefulWidget {
@@ -21,13 +21,10 @@ class _LoginActivityState extends State<LoginActivity> {
     super.initState();
   }
 
-  //function when the login is processed
-  void onLogin(Map res) {
-    if (!res['success']) {
-      Helper.alert(context, "enter valid phone number");
-    } else {
-      Navigator.pushNamed(context, "otp",
-          arguments: phNoCon.text.toString().substring(6, 10));
+  //alert if any error comes
+  void alertWanted(bool ch) {
+    if (ch) {
+      Helper.alert(context, "some internal error");
     }
   }
 
@@ -63,9 +60,9 @@ class _LoginActivityState extends State<LoginActivity> {
                 height: 30,
               ),
               Helper.customButton("Send Code", () async {
-                Map res = await Auth.loginFirebase(phNoCon.text.toString(),
-                    countryCodeController.text.toString());
-                onLogin(res);
+                bool ch = await Auth.loginFirebase(phNoCon.text.toString(),
+                    countryCodeController.text.toString(), context);
+                alertWanted(ch);
               }, 50, 300)
             ]),
           ),
