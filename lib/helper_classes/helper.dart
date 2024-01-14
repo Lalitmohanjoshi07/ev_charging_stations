@@ -35,7 +35,7 @@ class Helper {
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)))),
           // TODO: update on pressed
-          onPressed: () {},
+          onPressed: callback,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -148,7 +148,7 @@ class Helper {
               ),
               TextField(
                 controller: countryCodeController,
-                keyboardType: TextInputType.phone,
+                keyboardType: TextInputType.number,
                 maxLength: 4,
                 decoration: InputDecoration(
                     contentPadding:

@@ -57,11 +57,21 @@ class _OtpVerificationState extends State<OtpVerification> {
               const SizedBox(
                 height: 20,
               ),
-              //TODO: add otp textarea
-              Pinput(
-                controller: otpController,
-                length: 6,
-                showCursor: true,
+              //otp textArea
+              Center(
+                child: Pinput(
+                  defaultPinTheme: const PinTheme(
+                      decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      width: 50,
+                      height: 50,
+                      textStyle:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  controller: otpController,
+                  length: 6,
+                  showCursor: true,
+                ),
               ),
               const SizedBox(
                 height: 20,
