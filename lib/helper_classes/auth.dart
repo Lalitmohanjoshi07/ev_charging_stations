@@ -2,9 +2,16 @@ import 'package:ev_charging_stations/helper_classes/helper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class Auth {
+class Auth extends ChangeNotifier {
   //verification id
   static String verifyId = "";
+  User? user;
+
+  void addUser() {
+    user = FirebaseAuth.instance.currentUser;
+    print(user?.uid.toString());
+    notifyListeners();
+  }
 
   //function to Login to the system
   static Future loginFirebase(

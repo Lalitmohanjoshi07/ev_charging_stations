@@ -37,6 +37,7 @@ class _HomeActivityState extends State<HomeActivity> {
             for (var e in context.read<DataModel>().stationData['list'])
               //TODO: pass the values fetched from API
               Helper.customTile(() {
+                context.read<DataModel>().statenow(e);
                 Navigator.pushNamed(context, 'profile');
               },
                   id: e['uid'],
