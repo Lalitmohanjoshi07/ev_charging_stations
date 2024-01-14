@@ -6,11 +6,15 @@ A new Flutter project.
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+A few things you needs to be installed on your system
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1-> your system needs to be installed Flutter
+2-> need either VS code or Android studio with some extentions
+    a-> VS code: Flutter, Dart, gradle
+    b-> Android Studio: Flutter, Dart
+    c-> Other Editors with their respective extentions
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+now you need to install the dependencies on your system
+just click on pub get and you need an active internet
+ connection for that.
+ and done just run your project 
